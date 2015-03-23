@@ -5,6 +5,8 @@
 __author__ = "Ravi Chhawal"
 __date__ = "$Mar 20, 2015 2:29:40 PM$"
 
+from CDR_Result import *
+
 def idea():
     file_r = 'F:\\Ravi Work\\Raid Case\\idea\\idea.csv'
     read_f = open(file_r, 'r')
@@ -66,8 +68,32 @@ def see_sample(file_name):
         line = reader.readline() 
         if count > 10:
             break 
-            
+
+def search_key(k):
+    key = k.split('|')
+    print ('hhhh')
+    file_r = 'F:\\Ravi Work\\Raid Case\\TTSL\\search.txt'
+    file_w = 'F:\\Ravi Work\\Raid Case\\TTSL\\record_v2.txt'
+    reader = open(file_r, 'r')
+    writer = open(file_w, 'w')
+    line = reader.readline()
+    writer.write(line)
+    count = 0
+    while line:
+        count += 1
+        data = line.split('|')
+        for s in key:
+            if s == data[0]:
+                writer.write(line)
+                print ('Found', count)
+        line = reader.readline()
+        if count % 100000 == 0:
+            print (count)
+
 if __name__ == "__main__":
     print ("Hello World")
-    #see_sample('F:\\Ravi Work\\Raid Case\\BSNL\\BSNL.txt')
-    BSNL()
+    #see_sample('F:\\Ravi Work\\Raid Case\\TTSL\\ravi.txt')
+    #bsnl_result()
+    key = '9214434210|9214434215|9214434217'
+    search_key(key)
+    #BSNL()

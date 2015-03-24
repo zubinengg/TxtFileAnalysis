@@ -54,6 +54,30 @@ def BSNL():
         
         if count % 100000 == 0:
             print (count)       
+def TTSL():
+    file_r = 'F:\\Ravi Work\\Raid Case\\TTSL\\TTSL.txt'
+    read_f = open(file_r, 'r')
+    out_w = open('F:\\Ravi Work\\Raid Case\\TTSL\\out.txt', 'w')
+    line = read_f.readline()
+    count = 0
+    out_w.write('TTSL_NO|' + line)
+    line = read_f.readline()
+    while line:
+        count += 1
+        data = line.split('|')
+        #print (line.strip('\n'))
+        if len(data) > 8:
+            if data[7] == 'MOC':
+                temp = data[0]
+                out_w.write(temp + '|' + line)
+            if data[7] == 'MTC':
+                temp = data[1]
+                out_w.write(temp + '|' + line)                        
+        line = read_f.readline()
+        
+        if count % 100000 == 0:
+            print (count)  
+            
             
 def see_sample(file_name):
     reader = open(file_name, 'r')
@@ -92,8 +116,9 @@ def search_key(k):
 
 if __name__ == "__main__":
     print ("Hello World")
-    #see_sample('F:\\Ravi Work\\Raid Case\\TTSL\\ravi.txt')
-    #bsnl_result()
-    key = '9214434210|9214434215|9214434217'
-    search_key(key)
+    see_sample('F:\\Ravi Work\\Raid Case\\TTSL\\ravi.txt')
+    #TTSL()
+    ttsl_result()
+    #key = '9214434210|9214434215|9214434217'
+    #search_key(key)
     #BSNL()
